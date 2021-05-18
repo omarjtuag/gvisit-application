@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "https://omarjtuag.github.io/gvisit-application/static/css/main.b1037e3f.chunk.css",
-    "main.js": "https://omarjtuag.github.io/gvisit-application/static/js/main.e05eb1c7.chunk.js",
-    "main.js.map": "https://omarjtuag.github.io/gvisit-application/static/js/main.e05eb1c7.chunk.js.map",
-    "runtime-main.js": "https://omarjtuag.github.io/gvisit-application/static/js/runtime-main.31a6048b.js",
-    "runtime-main.js.map": "https://omarjtuag.github.io/gvisit-application/static/js/runtime-main.31a6048b.js.map",
-    "static/js/2.2f2fe6ac.chunk.js": "https://omarjtuag.github.io/gvisit-application/static/js/2.2f2fe6ac.chunk.js",
-    "static/js/2.2f2fe6ac.chunk.js.map": "https://omarjtuag.github.io/gvisit-application/static/js/2.2f2fe6ac.chunk.js.map",
-    "index.html": "https://omarjtuag.github.io/gvisit-application/index.html",
-    "static/css/main.b1037e3f.chunk.css.map": "https://omarjtuag.github.io/gvisit-application/static/css/main.b1037e3f.chunk.css.map",
-    "static/js/2.2f2fe6ac.chunk.js.LICENSE.txt": "https://omarjtuag.github.io/gvisit-application/static/js/2.2f2fe6ac.chunk.js.LICENSE.txt",
-    "static/media/fingerprint_icon.2655f6e7.png": "https://omarjtuag.github.io/gvisit-application/static/media/fingerprint_icon.2655f6e7.png",
-    "static/media/logo.b03bdfc6.png": "https://omarjtuag.github.io/gvisit-application/static/media/logo.b03bdfc6.png"
+    "main.css": "/gvisit-application/static/css/main.ab4f6a2c.chunk.css",
+    "main.js": "/gvisit-application/static/js/main.e05eb1c7.chunk.js",
+    "main.js.map": "/gvisit-application/static/js/main.e05eb1c7.chunk.js.map",
+    "runtime-main.js": "/gvisit-application/static/js/runtime-main.ff23942a.js",
+    "runtime-main.js.map": "/gvisit-application/static/js/runtime-main.ff23942a.js.map",
+    "static/js/2.b4666b7b.chunk.js": "/gvisit-application/static/js/2.b4666b7b.chunk.js",
+    "static/js/2.b4666b7b.chunk.js.map": "/gvisit-application/static/js/2.b4666b7b.chunk.js.map",
+    "index.html": "/gvisit-application/index.html",
+    "static/css/main.ab4f6a2c.chunk.css.map": "/gvisit-application/static/css/main.ab4f6a2c.chunk.css.map",
+    "static/js/2.b4666b7b.chunk.js.LICENSE.txt": "/gvisit-application/static/js/2.b4666b7b.chunk.js.LICENSE.txt",
+    "static/media/fingerprint_icon.2655f6e7.png": "/gvisit-application/static/media/fingerprint_icon.2655f6e7.png",
+    "static/media/logo.b03bdfc6.png": "/gvisit-application/static/media/logo.b03bdfc6.png"
   },
   "entrypoints": [
-    "static/js/runtime-main.31a6048b.js",
-    "static/js/2.2f2fe6ac.chunk.js",
-    "static/css/main.b1037e3f.chunk.css",
+    "static/js/runtime-main.ff23942a.js",
+    "static/js/2.b4666b7b.chunk.js",
+    "static/css/main.ab4f6a2c.chunk.css",
     "static/js/main.e05eb1c7.chunk.js"
   ]
 }
