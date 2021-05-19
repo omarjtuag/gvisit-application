@@ -9,7 +9,7 @@ export const CreateExit = async (obj) => {
 };
 
 export const CreateVisitor = async (obj) => {
-    const response = await window.EntryController.registerVisitor(obj);
+    const response = await window.FirstController.registerVisitor(obj);
     return response;
 };
 

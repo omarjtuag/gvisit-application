@@ -68,6 +68,7 @@ const Firsttime = () => {
             const object = JSON.parse(response);
             if (response !== false) {
                 setMotives(object);
+                setMotive(object[0].motive);
             } else {
                 setMotives([]);
             }
@@ -84,7 +85,7 @@ const Firsttime = () => {
     };
 
     const register = async () => {
-        if (userId === '' || motive === '' || name === '' || lastname === '' || rfc === '' || company === '' || host === '' || badge === '' || setupDatetime === '') {
+        if (userId === '' || motive === '' || name === '' || lastname === '' || company === '' || host === '' || badge === '' || setupDatetime === '') {
             Modal.info({
                 title: 'Mensaje del sistema',
                 content: 'Debe rellenar todos los campos'
