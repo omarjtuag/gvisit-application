@@ -1,7 +1,7 @@
 import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
-import { UserOutlined, FilePdfOutlined, FormOutlined, ToolOutlined, FileAddOutlined, PieChartOutlined } from '@ant-design/icons';
+import { UserOutlined, FilePdfOutlined, FormOutlined, ToolOutlined, FileAddOutlined, PieChartOutlined, OrderedListOutlined } from '@ant-design/icons';
 
 const Sidebar = () => {
     const { Sider } = Layout;
@@ -28,6 +28,11 @@ const Sidebar = () => {
                     <Menu.Item key="3" icon={<FormOutlined />}>
                         <Link to={'/dashboard/access'}>
                             Accesos
+                        </Link>
+                    </Menu.Item>
+                    <Menu.Item key="4" icon={<OrderedListOutlined />}>
+                        <Link to={'/dashboard/visits'}>
+                            Entradas
                         </Link>
                     </Menu.Item>
                 </Menu.ItemGroup>

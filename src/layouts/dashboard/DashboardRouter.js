@@ -4,6 +4,7 @@ import { ReadUser, CreateUser, UpdateUser } from './views/User';
 import { ReadMotive, CreateMotive, UpdateMotive } from './views/Motive';
 import { ReadSetting } from './views/Setting';
 import { ReadSelection, ReadAlready, ReadEntry, ReadExit, ReadFirsttime, ReadUpdate } from './views/Access';
+import { ReadEntrys } from './views/Entrys';
 
 const DashboardRouter = ({ match: { url } }) => (
     <Switch>
@@ -20,6 +21,7 @@ const DashboardRouter = ({ match: { url } }) => (
         <Route path={`${url}/access/exit`} exact component={ReadExit} />
         <Route path={`${url}/access/firsttime`} exact component={ReadFirsttime} />
         <Route path={`${url}/access/update`} exact component={ReadUpdate} />
+        <Route path={`${url}/visits`} exact component={ReadEntrys} />
         <Redirect to="/dashboard/access" />
     </Switch>
 );
