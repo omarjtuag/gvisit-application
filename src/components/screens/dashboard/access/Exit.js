@@ -14,13 +14,13 @@ const Exit = () => {
     const [isRfc, setIsRfc] = useState('');
     const [rfc, setRfc] = useState('');
     const [birthday, setBirthday] = useState('');
-    const [image, setImage] = useState('');    
+    const [image, setImage] = useState('');
     const [badge, setBadge] = useState('');
     const [host, setHost] = useState('');
     const [motive, setMotive] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
-    const { Title } = Typography;   
+    const { Title } = Typography;
 
     const openNotificationWithIcon = (type, message) => {
         notification[type]({
@@ -29,8 +29,8 @@ const Exit = () => {
         });
     };
 
-    const getFingerprint = async () => {
-        const response = await window.ExitController.getFingerprint();
+    const next = async () => {
+        const response = await window.ExitController.searchUser();
         const object = JSON.parse(response);
         if (object.success === false) {
             Modal.error({
@@ -48,6 +48,10 @@ const Exit = () => {
             setImage(object.user.image);
             setFingerprint(true);
         }
+    };
+
+    const getFingerprint = async () => {
+        await window.ExitController.getFingerprint();
     };
 
     const registerExit = async () => {
@@ -110,8 +114,9 @@ const Exit = () => {
                         :
                         <Row align="middle" justify="center" style={{ marginTop: 40, width: '100%' }}>
                             <Space direction="vertical">
-                                <Title level={3}>Presiona para iniciar la busqueda</Title>
+                                <Title level={3}>Presiona iniciar para ingresar huella</Title>
                                 <Button type="primary" onClick={getFingerprint}>Iniciar</Button>
+                                <Button type="default" onClick={next}>Siguiente</Button>
                             </Space>
                         </Row>
                 }

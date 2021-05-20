@@ -46,8 +46,8 @@ const Entry = () => {
         });
     };
 
-    const getFingerprint = async () => {
-        const response = await window.EntryController.getFingerprint();
+    const next = async () => {
+        const response = await window.EntryController.searchUser();
         const object = JSON.parse(response);
         if (object.success === false) {
             Modal.error({
@@ -65,6 +65,10 @@ const Entry = () => {
             setImage(object.user.image);
             setFingerprint(true);
         }
+    };
+
+    const getFingerprint = async () => {
+        await window.EntryController.getFingerprint();
     }
 
     const registerEntry = async () => {
@@ -156,8 +160,9 @@ const Entry = () => {
                         :
                         <Row align="middle" justify="center" style={{ marginTop: 40, width: '100%' }}>
                             <Space direction="vertical">
-                                <Title level={3}>Presiona para iniciar la busqueda</Title>
+                                <Title level={3}>Presiona iniciar para ingresar huella</Title>
                                 <Button type="primary" onClick={getFingerprint}>Iniciar</Button>
+                                <Button type="default" onClick={next}>Siguiente</Button>
                             </Space>
                         </Row>
                 }
