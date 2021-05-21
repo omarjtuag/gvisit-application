@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Breadcrumb, Row, Col, Layout, Card, Input, Button, Modal, notification, Spin, Divider, Space } from 'antd';
+import { Breadcrumb, Row, Col, Layout, Card, Input, Button, Modal, notification, Spin, Space } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { CreateMotive } from '../../../../helpers/controllers/Motive';
 

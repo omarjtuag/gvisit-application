@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Breadcrumb, Steps, Row, Col, Layout, Button, Typography, Space, Modal, Input, Select, Spin, notification, Checkbox, DatePicker } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import moment from 'moment';
-import { GetPolicy, CreateVisitor } from '../../../../helpers/controllers/Access';
+import { GetPolicy, GetSetting, CreateVisitor } from '../../../../helpers/controllers/Access';
 import { GetAll } from '../../../../helpers/controllers/Motive';
 
 const steps = [
@@ -29,6 +29,7 @@ const Firsttime = () => {
     const history = useHistory();
     const [isLoading, setIsLoading] = useState(false);
     const [current, setCurrent] = useState(0);
+    const [settings, setSettings] = useState(null);
     const [policy, setPolicy] = useState('');
     const [motives, setMotives] = useState([]);
     const [motive, setMotive] = useState('');
@@ -58,6 +59,15 @@ const Firsttime = () => {
         const request = async () => {
             const response = await GetPolicy();
             setPolicy(response);
+        };
+        request();
+    }, []);
+
+    useEffect(() => {
+        const request = async () => {
+            const response = await GetSetting();
+            const object = JSON.parse(response);
+            setSettings(object);
         };
         request();
     }, []);
@@ -136,9 +146,12 @@ const Firsttime = () => {
         if (step === 1) {
             return (
                 <Row style={{ width: '100%', padding: 50 }} align="middle" justify="center">
-                    <Button type="primary" onClick={makePicture}>
-                        Tomar fotografía
-                    </Button>
+                    <Space direction="vertical">
+                        <Title level={3}>Presiona para tomar fotografía</Title>
+                        <Button type="primary" onClick={makePicture}>
+                            Tomar fotografía
+                        </Button>
+                    </Space>
                 </Row>
             );
         };
@@ -146,9 +159,12 @@ const Firsttime = () => {
         if (step === 2) {
             return (
                 <Row style={{ width: '100%', padding: 50 }} align="middle" justify="center">
-                    <Button type="primary" onClick={registerFingerprint}>
-                        Registrar huellas
-                    </Button>
+                    <Space direction="vertical">
+                        <Title level={3}>Presiona para ingresar huellas</Title>
+                        <Button type="primary" onClick={registerFingerprint}>
+                            Registrar huellas
+                        </Button>
+                    </Space>
                 </Row>
             );
         };
@@ -187,14 +203,18 @@ const Firsttime = () => {
                         <Row style={{ width: '100%' }}>
                             <Space direction="vertical">
                                 <Title level={3}>Ingresa la información de usuario</Title>
-                                <Input onChange={(e) => { setUserId(e.target.value) }} value={userId} style={{ marginTop: 10 }} placeholder="Número de identificación" />
+                                {
+                                    settings.useDNI === true && <Input onChange={(e) => { setUserId(e.target.value) }} value={userId} style={{ marginTop: 10 }} placeholder="Número de identificación" />
+                                }
                                 <Input onChange={(e) => { setName(e.target.value) }} value={name} style={{ marginTop: 10 }} placeholder="Nombre" />
                                 <Input onChange={(e) => { setLastname(e.target.value) }} value={lastname} style={{ marginTop: 10 }} placeholder="Apellido" />
                                 <Checkbox onChange={() => { setIsRfc(!isRfc) }} checked={isRfc}>Cuenta con RFC</Checkbox>
                                 {
                                     isRfc && <Input onChange={(e) => { setRfc(e.target.value) }} value={rfc} placeholder="Rfc" />
                                 }
-                                <DatePicker placeholder="Fecha de nacimiento" format="YYYY-MM-DD HH:mm:ss" showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }} onChange={(e) => { setSetupDatetime(e.format("YYYY-MM-DD HH:mm:ss").toString()) }} />
+                                {
+                                    settings.useDate === true && <DatePicker placeholder="Fecha de nacimiento" format="YYYY-MM-DD HH:mm:ss" showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }} onChange={(e) => { setSetupDatetime(e.format("YYYY-MM-DD HH:mm:ss").toString()) }} />
+                                }
                                 {isLoading &&
                                     <Spin indicator={antIcon} />
                                 }

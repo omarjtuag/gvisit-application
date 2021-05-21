@@ -22,3 +22,8 @@ export const GetPolicy = async () => {
     const response = await window.FirstController.policy();
     return response;
 };
+
+export const GetSetting = async () => {
+    const response = await window.FirstController.settings();
+    return response;
+};

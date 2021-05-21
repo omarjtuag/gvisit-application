@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Breadcrumb, Row, Col, Layout, Card, Button, Typography, Space } from 'antd';
+import { Breadcrumb, Row, Col, Layout, Button, Typography, Space } from 'antd';
 import FirstLogo from '../../../../assets/users_icon.png';
 import AlreadyLogo from '../../../../assets/fingerprint_icon.png';
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Breadcrumb, Row, Col, Layout, Card, Input, Button, Modal, notification, Spin, Collapse, Typography, Checkbox } from 'antd';
+import { Breadcrumb, Row, Col, Layout, Input, Button, Modal, notification, Spin, Collapse, Typography, Checkbox } from 'antd';
 import { LoadingOutlined, EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import { GetOne, SaveSettings } from '../../../../helpers/controllers/Setting';
 

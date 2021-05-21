@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Breadcrumb, Row, Col, Layout, Card, Button, Typography, Space, Modal, Input, Divider, Select, Spin, notification } from 'antd';
+import { Breadcrumb, Row, Col, Layout, Button, Typography, Space, Modal, Input, Divider, Select, Spin, notification } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import { GetAll } from '../../../../helpers/controllers/Motive';
 import { CreateEntry } from '../../../../helpers/controllers/Access';
@@ -16,8 +16,7 @@ const Entry = () => {
     const [rfc, setRfc] = useState('');
     const [birthday, setBirthday] = useState('');
     const [image, setImage] = useState('');
-    const [motives, setMotives] = useState([]);
-    const [company, setCompany] = useState('');
+    const [motives, setMotives] = useState([]);  
     const [badge, setBadge] = useState('');
     const [host, setHost] = useState('');
     const [motive, setMotive] = useState('');
@@ -32,6 +31,7 @@ const Entry = () => {
             const object = JSON.parse(response);
             if (response !== false) {
                 setMotives(object);
+                setMotive(object[0].motive);
             } else {
                 setMotives([]);
             }
@@ -72,7 +72,7 @@ const Entry = () => {
     }
 
     const registerEntry = async () => {
-        if (company === '' || badge === '' || host === '' || motive === '') {
+        if (badge === '' || host === '' || motive === '') {
             Modal.info({
                 title: 'Mensaje del sistema',
                 content: 'Debe rellenar todos los campos'
@@ -121,8 +121,7 @@ const Entry = () => {
                             <Col span={16}>
                                 <Row style={{ width: '100%' }}>
                                     <Space direction="vertical">
-                                        <Title level={3}>Ingresa la información solicitada</Title>
-                                        <Input onChange={(e) => { setCompany(e.target.value) }} value={company} style={{ marginTop: 20 }} placeholder="Empresa" />
+                                        <Title level={3}>Ingresa la información solicitada</Title>                                        
                                         <Input onChange={(e) => { setBadge(e.target.value) }} value={badge} style={{ marginTop: 10 }} placeholder="Nro de gafete" />
                                         <Input onChange={(e) => { setHost(e.target.value) }} value={host} style={{ marginTop: 10 }} placeholder="Nombre de la persona a visitar" />
                                         {

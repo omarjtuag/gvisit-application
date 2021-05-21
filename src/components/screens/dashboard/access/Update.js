@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Breadcrumb, Steps, Row, Col, Layout, Button, Typography, Space, Modal, Input, Select, Spin, notification, Checkbox, DatePicker } from 'antd';
+import { Breadcrumb, Steps, Row, Col, Layout, Button, Typography, Space, Modal, Input, Spin, notification, Checkbox, DatePicker } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import moment from 'moment';
 import { UpdateVisitor } from '../../../../helpers/controllers/Access';
@@ -19,6 +19,7 @@ const steps = [
 
 const Update = () => {
     const history = useHistory();
+    const [settings, setSettings] = useState(null);
     const [current, setCurrent] = useState(0);
     const [fingerprint, setFingerprint] = useState(false);
     const [id, setId] = useState('');
@@ -33,6 +34,15 @@ const Update = () => {
     const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
     const { Title, Text } = Typography;
     const { Step } = Steps;
+
+    useEffect(() => {
+        const request = async () => {
+            const response = await GetSetting();
+            const object = JSON.parse(response);
+            setSettings(object);
+        };
+        request();
+    }, []);
 
     const openNotificationWithIcon = (type, message) => {
         notification[type]({
@@ -110,13 +120,11 @@ const Update = () => {
             return (
                 <Row style={{ width: '100%', padding: 50 }} align="middle" justify="center">
                     <Space direction="vertical">
-                        <Row style={{ width: '100%', padding: 50 }} align="middle" justify="center">
-                            <img height={200} width={200} src={`data:image/png;base64,${image}`} />
-                            <Text>Imagen actual</Text>
-                            <Button type="primary" onClick={makePicture} style={{ marginTop: 10 }}>
-                                Modificar fotografía
-                            </Button>
-                        </Row>
+                        <img height={200} width={200} src={`data:image/png;base64,${image}`} />
+                        <Text style={{ marginTop: 10 }}>Imagen actual</Text>
+                        <Button type="primary" onClick={makePicture} style={{ marginTop: 10 }}>
+                            Modificar fotografía
+                        </Button>
                     </Space>
                 </Row>
             );
@@ -125,9 +133,12 @@ const Update = () => {
         if (step === 1) {
             return (
                 <Row style={{ width: '100%', padding: 50 }} align="middle" justify="center">
-                    <Button type="primary" onClick={registerFingerprint}>
-                        Modificar huellas
-                    </Button>
+                    <Space direction="vertical">
+                        <Title level={3}>Presiona para modificar huellas</Title>
+                        <Button type="primary" onClick={registerFingerprint}>
+                            Modificar huellas
+                        </Button>
+                    </Space>
                 </Row>
             );
         };
@@ -139,14 +150,18 @@ const Update = () => {
                         <Row style={{ width: '100%' }}>
                             <Space direction="vertical">
                                 <Title level={3}>Ingresa la información de usuario</Title>
-                                <Input onChange={(e) => { setUserId(e.target.value) }} value={userId} style={{ marginTop: 10 }} placeholder="Número de identificación" />
+                                {
+                                    settings.useDNI === true && <Input onChange={(e) => { setUserId(e.target.value) }} value={userId} style={{ marginTop: 10 }} placeholder="Número de identificación" />
+                                }
                                 <Input onChange={(e) => { setName(e.target.value) }} value={name} style={{ marginTop: 10 }} placeholder="Nombre" />
                                 <Input onChange={(e) => { setLastname(e.target.value) }} value={lastname} style={{ marginTop: 10 }} placeholder="Apellido" />
                                 <Checkbox onChange={() => { setIsRfc(!isRfc) }} checked={isRfc}>Cuenta con RFC</Checkbox>
                                 {
                                     isRfc && <Input onChange={(e) => { setRfc(e.target.value) }} value={rfc} placeholder="Rfc" />
                                 }
-                                <DatePicker placeholder="Fecha de nacimiento" format="YYYY-MM-DD HH:mm:ss" showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }} onChange={(e) => { setBirthday(e.format("YYYY-MM-DD HH:mm:ss").toString()) }} />
+                                {
+                                    settings.useDate === true && <DatePicker placeholder="Fecha de nacimiento" format="YYYY-MM-DD HH:mm:ss" value={birthday} showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }} onChange={(e) => { setBirthday(e.format("YYYY-MM-DD HH:mm:ss").toString()) }} />
+                                }
                                 {isLoading &&
                                     <Spin indicator={antIcon} />
                                 }

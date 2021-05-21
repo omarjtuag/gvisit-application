@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { Breadcrumb, Row, Col, Layout, Card, Button, Typography, Space } from 'antd';
+import { Breadcrumb, Row, Col, Layout, Button, Typography, Space } from 'antd';
 import EntryLogo from '../../../../assets/entry_icon.png';
 import ExitLogo from '../../../../assets/exit_icon.png';
 import EditLogo from '../../../../assets/edit_icon.png';

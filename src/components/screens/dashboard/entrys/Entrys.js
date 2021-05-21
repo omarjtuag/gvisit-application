@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, Layout, Row, Col, Button, Table, Tag, Space, Spin, Input, Modal } from 'antd';
-import { PlusCircleOutlined, LoadingOutlined } from '@ant-design/icons';
+import { LoadingOutlined } from '@ant-design/icons';
 import { GetAll } from '../../../../helpers/controllers/Guard';
 
 const Entrys = () => {
@@ -15,8 +15,7 @@ const Entrys = () => {
 
     useEffect(() => {
         const request = async () => {
-            const response = await GetAll();
-            console.log(response);
+            const response = await GetAll();            
             const object = JSON.parse(response);
             if (response !== false) {
                 setData(object);
