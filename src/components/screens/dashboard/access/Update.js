@@ -3,7 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Breadcrumb, Steps, Row, Col, Layout, Button, Typography, Space, Modal, Input, Spin, notification, Checkbox, DatePicker } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import moment from 'moment';
-import { UpdateVisitor } from '../../../../helpers/controllers/Access';
+import { UpdateVisitor, GetSetting } from '../../../../helpers/controllers/Access';
 
 const steps = [
     {
