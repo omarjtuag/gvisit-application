@@ -2,12 +2,13 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Breadcrumb, Layout, Row, Col, Button, Table, Tag, Space, Spin, Input, Modal } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
-import { GetAll } from '../../../../helpers/controllers/Guard';
+import { GetAll, UpdateEntry, UpdateEvac } from '../../../../helpers/controllers/Guard';
 
 const Entrys = () => {
     const [data, setData] = useState(null);
     const [staticData, setStaticData] = useState(null);
     const [modalVisible, setModalVisible] = useState(false);
+    const [modalVisibles, setModalVisibles] = useState(false);
     const [tmpId, setTmpId] = useState(null);
     const { Column } = Table;
     const { Search } = Input;
@@ -15,7 +16,7 @@ const Entrys = () => {
 
     useEffect(() => {
         const request = async () => {
-            const response = await GetAll();            
+            const response = await GetAll();
             const object = JSON.parse(response);
             if (response !== false) {
                 setData(object);
@@ -28,57 +29,106 @@ const Entrys = () => {
         request();
     }, []);
 
+    useEffect(() => {
+        const interval = setInterval(async () => {
+            const response = await GetAll();
+            const object = JSON.parse(response);
+            if (response !== false) {
+                setData(object);
+                setStaticData(object);
+            } else {
+                setData([]);
+                setStaticData([]);
+            }
+        }, 5000);
+        return () => clearInterval(interval);
+    }, []);
+
     const filterByText = (value) => {
         if (value === '') {
             setData(staticData);
         } else {
-            let tmp = staticData.filter((item) => item.motive.includes(value));
+            let tmp = staticData.filter((item) => item.empresa.includes(value) || item.nombre.includes(value) || item.apellido.includes(value) || item.edad.includes(value) || item.motivo.includes(value) || item.anfitrion.includes(value) || item.gafete.includes(value));
             setData(tmp);
         }
     }
 
-    // const deleteMotive = async (id) => {
-    //     setData(null);
-    //     setStaticData(null);
-    //     setModalVisible(false);
-    //     const obj = {
-    //         id: id
-    //     };
-    //     const response = await DeleteMotive(JSON.stringify(obj));
-    //     if (response !== false) {
-    //         const response = await GetAll();
-    //         const object = JSON.parse(response);
-    //         if (response !== false) {
-    //             setData(object);
-    //             setStaticData(object);
-    //         } else {
-    //             setData([]);
-    //             setStaticData([]);
-    //         }
-    //     } else {
-    //         const response = await GetAll();
-    //         const object = JSON.parse(response);
-    //         if (response !== false) {
-    //             setData(object);
-    //             setStaticData(object);
-    //         } else {
-    //             setData([]);
-    //             setStaticData([]);
-    //         }
-    //     }
-    // }
+    const updateEntry = async (id) => {
+        setData(null);
+        setStaticData(null);
+        setModalVisible(false);
+        const response = await UpdateEntry(id);
+        if (response !== false) {
+            const response = await GetAll();
+            const object = JSON.parse(response);
+            if (response !== false) {
+                setData(object);
+                setStaticData(object);
+            } else {
+                setData([]);
+                setStaticData([]);
+            }
+        } else {
+            const response = await GetAll();
+            const object = JSON.parse(response);
+            if (response !== false) {
+                setData(object);
+                setStaticData(object);
+            } else {
+                setData([]);
+                setStaticData([]);
+            }
+        }
+    }
+
+    const updateExit = async () => {
+        setData(null);
+        setStaticData(null);
+        setModalVisible(false);
+        const response = await UpdateEvac();
+        if (response !== false) {
+            const response = await GetAll();
+            const object = JSON.parse(response);
+            if (response !== false) {
+                setData(object);
+                setStaticData(object);
+            } else {
+                setData([]);
+                setStaticData([]);
+            }
+        } else {
+            const response = await GetAll();
+            const object = JSON.parse(response);
+            if (response !== false) {
+                setData(object);
+                setStaticData(object);
+            } else {
+                setData([]);
+                setStaticData([]);
+            }
+        }
+    }
 
     return (
         <Layout style={{ background: 'white' }}>
-            {/* <Modal
+            <Modal
+                title="Mensaje del sistema"
+                visible={modalVisibles}
+                onOk={() => { updateExit() }}
+                onCancel={() => { setModalVisibles(false) }}
+                okText="Sí"
+                cancelText="No">
+                <p>¿Desea evacuar a todos los vistantes?</p>
+            </Modal>
+            <Modal
                 title="Mensaje del sistema"
                 visible={modalVisible}
-                onOk={() => { deleteMotive(tmpId) }}
+                onOk={() => { updateEntry(tmpId) }}
                 onCancel={() => { setModalVisible(false) }}
                 okText="Sí"
                 cancelText="No">
-                <p>¿Desea eliminar el motivo?</p>
-            </Modal> */}
+                <p>¿Desea dar salida al visitante seleccionado?</p>
+            </Modal>
             <Row style={{ margin: 20 }}>
                 <Col span={8}>
                     <Breadcrumb>
@@ -87,7 +137,7 @@ const Entrys = () => {
                             <Link to={'/dashboard/entrys'}>Entradas</Link>
                         </Breadcrumb.Item>
                     </Breadcrumb>
-                </Col>              
+                </Col>
             </Row>
             <Row style={{ marginVertical: 20 }}>
                 <Col span={5}>
@@ -97,6 +147,7 @@ const Entrys = () => {
                         style={{ width: 200, marginLeft: 20 }}
                         onChange={(e) => { filterByText(e.target.value) }}
                     />
+                    <Button onClick={() => { setModalVisibles(true) }} type="text" style={{ color: 'red', marginLeft: 10 }}>Evacuar</Button>
                 </Col>
             </Row>
             <Row style={{ padding: 20 }}>
@@ -116,24 +167,21 @@ const Entrys = () => {
                             <Column title="Gafete" dataIndex="gafete" key="gafete" />
                             <Column title="Motivo salida" dataIndex="motivoSalida" key="motivoSalida" />
                             <Column title="Fecha ingreso" dataIndex="fechaIngreso" key="fechaIngreso" />
-                            <Column title="Fecha salida" dataIndex="fechaSalida" key="fechaSalida" />                            
-                            {/* <Column
+                            <Column title="Fecha salida" dataIndex="fechaSalida" key="fechaSalida" />
+                            <Column
                                 title="Acción"
                                 key="action"
                                 render={(text, record) => (
                                     <>
-                                        <Space size="small">
-                                            <Link to={`/dashboard/motives/${record.id}`}>Editar</Link>
-                                        </Space>
                                         <Space size="small" style={{ marginLeft: 10 }}>
                                             <Button onClick={() => {
-                                                setTmpId(record.id);
+                                                setTmpId(record.nroTransaccion);
                                                 setModalVisible(true);
-                                            }} type="text" style={{ color: 'red' }}>Eliminar</Button>
+                                            }} type="text" style={{ color: 'red' }}>Dar salida</Button>
                                         </Space>
                                     </>
                                 )}
-                            /> */}
+                            />
                         </Table>
                     </Col>}
             </Row>
