@@ -2,6 +2,8 @@ import React from 'react';
 import { Layout, Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import { UserOutlined, FilePdfOutlined, FormOutlined, ToolOutlined, FileAddOutlined, PieChartOutlined, OrderedListOutlined } from '@ant-design/icons';
+import { OpenReport } from '../../helpers/controllers/Report';
+import { OpenChart } from '../../helpers/controllers/Chart';
 
 const Sidebar = () => {
     const { Sider } = Layout;
@@ -38,12 +40,12 @@ const Sidebar = () => {
                 </Menu.ItemGroup>
                 <Menu.ItemGroup key="g3" title="Reportes">
                     <Menu.Item key="5" icon={<PieChartOutlined />}>
-                        <Link to={'/dashboard/access'}>
+                        <Link onClick={() => { OpenChart(); }}>
                             Gráficos
                         </Link>
                     </Menu.Item>
                     <Menu.Item key="6" icon={<FilePdfOutlined />}>
-                        <Link to={'/dashboard/access'}>
+                        <Link onClick={() => { OpenReport(); }}>
                             Reportes
                         </Link>
                     </Menu.Item>
