@@ -1,4 +1,4 @@
 export const OpenChart = () => {
-    const response = window.chartController.openReport();
+    const response = window.ChartController.openReport();
     return response;
 };
