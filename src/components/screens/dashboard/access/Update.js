@@ -150,9 +150,9 @@ const Update = () => {
                         <Row style={{ width: '100%' }}>
                             <Space direction="vertical">
                                 <Title level={3}>Ingresa la información de usuario</Title>
-                                {/* {
+                                {
                                     settings.useDNI === true && <Input onChange={(e) => { setUserId(e.target.value) }} value={userId} style={{ marginTop: 10 }} placeholder="Número de identificación" />
-                                } */}
+                                }
                                 <Input onChange={(e) => { setName(e.target.value) }} value={name} style={{ marginTop: 10 }} placeholder="Nombre" />
                                 <Input onChange={(e) => { setLastname(e.target.value) }} value={lastname} style={{ marginTop: 10 }} placeholder="Apellido" />
                                 <Checkbox onChange={() => { setIsRfc(!isRfc) }} checked={isRfc}>Cuenta con RFC</Checkbox>
