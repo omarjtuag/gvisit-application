@@ -152,12 +152,12 @@ const Update = () => {
                         <Row style={{ width: '100%' }}>
                             <Space direction="vertical">
                                 <Title level={3}>Ingresa la información de usuario</Title>
-                                <Input onChange={(e) => { setUserId(e.target.value) }} value={userId} style={{ marginTop: 10 }} placeholder="Número de identificación" />
-                                <Input onChange={(e) => { setName(e.target.value) }} value={name} style={{ marginTop: 10 }} placeholder="Nombre" />
-                                <Input onChange={(e) => { setLastname(e.target.value) }} value={lastname} style={{ marginTop: 10 }} placeholder="Apellido" />
+                                <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setUserId(e.target.value) }} value={userId} style={{ marginTop: 10 }} placeholder="Número de identificación" />
+                                <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setName(e.target.value) }} value={name} style={{ marginTop: 10 }} placeholder="Nombre" />
+                                <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setLastname(e.target.value) }} value={lastname} style={{ marginTop: 10 }} placeholder="Apellido" />
                                 <Checkbox onChange={() => { setIsRfc(!isRfc) }} checked={isRfc}>Cuenta con RFC</Checkbox>
                                 {
-                                    isRfc && <Input onChange={(e) => { setRfc(e.target.value) }} value={rfc} placeholder="Rfc" />
+                                    isRfc && <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setRfc(e.target.value) }} value={rfc} placeholder="Rfc" />
                                 }                                
                                 {/* <DatePicker placeholder="Fecha de nacimiento" format="YYYY-MM-DD HH:mm:ss" value={birthday} showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }} onChange={(e) => { setBirthday(e.format("YYYY-MM-DD HH:mm:ss").toString()) }} /> */}
                                 {isLoading &&

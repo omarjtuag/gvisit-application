@@ -78,19 +78,19 @@ const FirstTime = () => {
                             <Col span={24}>
                                 <Space direction='vertical'>
                                     <Text>Licenciamiento</Text>
-                                    <Input onChange={(e) => { setLicence(e.target.value) }} value={licence} style={{ marginTop: 20 }} placeholder="Introduce tu licencia" />
+                                    <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setLicence(e.target.value) }} value={licence} style={{ marginTop: 20 }} placeholder="Introduce tu licencia" />
                                     <Divider />
                                     <Text>Datos del servidor</Text>
-                                    <Input onChange={(e) => { setHost(e.target.value) }} value={host} placeholder="Nombre o ip del servidor" />
-                                    <Input onChange={(e) => { setDb(e.target.value) }} value={db} placeholder="Nombre de la base de datos" />
-                                    <Input onChange={(e) => { setUser(e.target.value) }} value={user} placeholder="Usuario de la base de datos" />
-                                    <Input.Password onChange={(e) => { setPass(e.target.value) }} value={pass} placeholder="Contraseña de la base de datos" iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
+                                    <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setHost(e.target.value) }} value={host} placeholder="Nombre o ip del servidor" />
+                                    <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setDb(e.target.value) }} value={db} placeholder="Nombre de la base de datos" />
+                                    <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setUser(e.target.value) }} value={user} placeholder="Usuario de la base de datos" />
+                                    <Input.Password onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setPass(e.target.value) }} value={pass} placeholder="Contraseña de la base de datos" iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
                                     <Divider />
                                     <Text>Información de la aplicación</Text>
                                     <Button onClick={selectPicture}>Seleccionar imagen</Button>
                                     <Divider />
                                     <Text>Política de ingreso</Text>
-                                    <TextArea rows={5} placeholder="Introduzca política de ingreso" onChange={(e) => { setPolicy(e.target.value) }} />
+                                    <TextArea onFocus={() => { window.AuthController.openKeyboard(); }} rows={5} placeholder="Introduzca política de ingreso" onChange={(e) => { setPolicy(e.target.value) }} />
                                     <Divider />
                                     <Button type="primary" block onClick={register} style={{ marginBottom: 10 }}>
                                         Guardar

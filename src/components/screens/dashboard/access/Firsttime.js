@@ -176,9 +176,9 @@ const Firsttime = () => {
                         <Row style={{ width: '100%' }}>
                             <Space direction="vertical">
                                 <Title level={3}>Ingresa la información solicitada</Title>
-                                <Input onChange={(e) => { setCompany(e.target.value) }} value={company} style={{ marginTop: 10 }} placeholder="Empresa" />
-                                <Input onChange={(e) => { setBadge(e.target.value) }} value={badge} style={{ marginTop: 10 }} placeholder="Nro de gafete" />
-                                <Input onChange={(e) => { setHost(e.target.value) }} value={host} style={{ marginTop: 10 }} placeholder="Nombre de la persona a visitar" />
+                                <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setCompany(e.target.value) }} value={company} style={{ marginTop: 10 }} placeholder="Empresa" />
+                                <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setBadge(e.target.value) }} value={badge} style={{ marginTop: 10 }} placeholder="Nro de gafete" />
+                                <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setHost(e.target.value) }} value={host} style={{ marginTop: 10 }} placeholder="Nombre de la persona a visitar" />
                                 {
                                     motives.length > 0 &&
                                     <>
@@ -204,13 +204,13 @@ const Firsttime = () => {
                             <Space direction="vertical">
                                 <Title level={3}>Ingresa la información de usuario</Title>
                                 {
-                                    settings.useDNI === true && <Input onChange={(e) => { setUserId(e.target.value) }} value={userId} style={{ marginTop: 10 }} placeholder="Número de identificación" />
+                                    settings.useDNI === true && <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setUserId(e.target.value) }} value={userId} style={{ marginTop: 10 }} placeholder="Número de identificación" />
                                 }
-                                <Input onChange={(e) => { setName(e.target.value) }} value={name} style={{ marginTop: 10 }} placeholder="Nombre" />
-                                <Input onChange={(e) => { setLastname(e.target.value) }} value={lastname} style={{ marginTop: 10 }} placeholder="Apellido" />
+                                <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setName(e.target.value) }} value={name} style={{ marginTop: 10 }} placeholder="Nombre" />
+                                <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setLastname(e.target.value) }} value={lastname} style={{ marginTop: 10 }} placeholder="Apellido" />
                                 <Checkbox onChange={() => { setIsRfc(!isRfc) }} checked={isRfc}>Cuenta con RFC</Checkbox>
                                 {
-                                    isRfc && <Input onChange={(e) => { setRfc(e.target.value) }} value={rfc} placeholder="Rfc" />
+                                    isRfc && <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setRfc(e.target.value) }} value={rfc} placeholder="Rfc" />
                                 }
                                 {
                                     settings.useDate === true && <DatePicker placeholder="Fecha de nacimiento" format="YYYY-MM-DD HH:mm:ss" showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }} onChange={(e) => { setSetupDatetime(e.format("YYYY-MM-DD HH:mm:ss").toString()) }} />

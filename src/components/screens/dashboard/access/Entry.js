@@ -122,8 +122,8 @@ const Entry = () => {
                                 <Row style={{ width: '100%' }}>
                                     <Space direction="vertical">
                                         <Title level={3}>Ingresa la información solicitada</Title>                                        
-                                        <Input onChange={(e) => { setBadge(e.target.value) }} value={badge} style={{ marginTop: 10 }} placeholder="Nro de gafete" />
-                                        <Input onChange={(e) => { setHost(e.target.value) }} value={host} style={{ marginTop: 10 }} placeholder="Nombre de la persona a visitar" />
+                                        <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setBadge(e.target.value) }} value={badge} style={{ marginTop: 10 }} placeholder="Nro de gafete" />
+                                        <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setHost(e.target.value) }} value={host} style={{ marginTop: 10 }} placeholder="Nombre de la persona a visitar" />
                                         {
                                             motives.length > 0 &&
                                             <>
