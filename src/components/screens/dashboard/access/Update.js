@@ -158,7 +158,7 @@ const Update = () => {
                                 {
                                     isRfc && <Input onChange={(e) => { setRfc(e.target.value) }} value={rfc} placeholder="Rfc" />
                                 }                                
-                                <DatePicker placeholder="Fecha de nacimiento" format="YYYY-MM-DD HH:mm:ss" value={birthday} showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }} onChange={(e) => { setBirthday(e.format("YYYY-MM-DD HH:mm:ss").toString()) }} />
+                                {/* <DatePicker placeholder="Fecha de nacimiento" format="YYYY-MM-DD HH:mm:ss" value={birthday} showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }} onChange={(e) => { setBirthday(e.format("YYYY-MM-DD HH:mm:ss").toString()) }} /> */}
                                 {isLoading &&
                                     <Spin indicator={antIcon} />
                                 }
