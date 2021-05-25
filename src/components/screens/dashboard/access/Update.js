@@ -62,6 +62,7 @@ const Update = () => {
 
     const getFingerprint = async () => {
         const response = await window.UpdateController.getFingerprint();
+        console.log(response);
         const object = JSON.parse(response);
         if (object.success === false) {
             Modal.error({
