@@ -39,7 +39,7 @@ const Settings = () => {
                 setAge(object.age);
                 setUseDni(object.useDni);
                 setUseRfc(object.useRfc);
-                setUseAge(object.useAge);
+                setUseAge(object.useDate);
             }
         };
         request();
