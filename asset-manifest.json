@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/gvisit-application/static/css/main.b1037e3f.chunk.css",
-    "main.js": "/gvisit-application/static/js/main.4acd1a7e.chunk.js",
-    "main.js.map": "/gvisit-application/static/js/main.4acd1a7e.chunk.js.map",
+    "main.js": "/gvisit-application/static/js/main.e3d24196.chunk.js",
+    "main.js.map": "/gvisit-application/static/js/main.e3d24196.chunk.js.map",
     "runtime-main.js": "/gvisit-application/static/js/runtime-main.ff23942a.js",
     "runtime-main.js.map": "/gvisit-application/static/js/runtime-main.ff23942a.js.map",
     "static/js/2.6ae5abff.chunk.js": "/gvisit-application/static/js/2.6ae5abff.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ff23942a.js",
     "static/js/2.6ae5abff.chunk.js",
     "static/css/main.b1037e3f.chunk.css",
-    "static/js/main.4acd1a7e.chunk.js"
+    "static/js/main.e3d24196.chunk.js"
   ]
 }
