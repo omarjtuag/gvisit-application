@@ -102,6 +102,7 @@ const Update = () => {
             setIsLoading(true);
             const obj = {
                 userId: userId,
+                company: company,
                 name: name,
                 lastname: lastname,
                 isRfc: isRfc,
