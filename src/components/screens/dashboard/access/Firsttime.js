@@ -115,6 +115,7 @@ const Firsttime = () => {
                 host: host,
                 motive: motive
             };
+            console.log(JSON.stringify(obj));
             const response = await CreateVisitor(JSON.stringify(obj));
             if (response !== false) {
                 openNotificationWithIcon('success', 'Entrada registrada exitosamente');
