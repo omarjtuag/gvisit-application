@@ -96,7 +96,7 @@ const Firsttime = () => {
     };
 
     const register = async () => {
-        if (userId === '' || motive === '' || name === '' || lastname === '' || company === '' || host === '' || badge === '' || setupDatetime === '') {
+        if (motive === '' || name === '' || lastname === '' || company === '' || host === '' || badge === '') {
             Modal.info({
                 title: 'Mensaje del sistema',
                 content: 'Debe rellenar todos los campos'

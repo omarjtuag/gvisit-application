@@ -91,7 +91,7 @@ const Update = () => {
     };
 
     const updateVisitor = async () => {
-        if (userId === '' || name === '' || lastname === '' || rfc === '' || birthday === '') {
+        if (name === '' || lastname === '') {
             Modal.info({
                 title: 'Mensaje del sistema',
                 content: 'Debe rellenar todos los campos'
