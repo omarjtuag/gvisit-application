@@ -25,7 +25,7 @@ const DashboardLayout = () => {
                 <Content style={{ background: '#FFF' }}>
                     <DashboardRouter />
                 </Content>
-                <Footer>
+                <Footer style={{ background: 'white' }}>
                     <div style={{ display: 'flex', flex: 1, flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'flex-end', alignContent: 'flex-end' }}>
                         <img style={{ height: 200, width: 200 }} src={`data:image/png;base64,${image}`} />
                     </div>
