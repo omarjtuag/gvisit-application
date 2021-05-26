@@ -37,8 +37,7 @@ const Update = () => {
 
     useEffect(() => {
         const request = async () => {
-            const response = await GetSetting();
-            console.log(response);
+            const response = await GetSetting();           
             const object = JSON.parse(response);
             setSettings(object);
         };
@@ -61,8 +60,7 @@ const Update = () => {
     };
 
     const getFingerprint = async () => {
-        const response = await window.UpdateController.getFingerprint();
-        console.log(response);
+        const response = await window.UpdateController.getFingerprint();   
         const object = JSON.parse(response);
         if (object.success === false) {
             Modal.error({

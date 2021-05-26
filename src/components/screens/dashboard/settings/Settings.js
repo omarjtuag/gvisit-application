@@ -29,8 +29,7 @@ const Settings = () => {
 
     useEffect(() => {
         const request = async () => {
-            const response = await GetOne();
-            console.log(response);
+            const response = await GetOne();           
             const object = JSON.parse(response);
             if (response !== false) {
                 setImage(object.image);
