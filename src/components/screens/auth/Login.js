@@ -53,7 +53,7 @@ const Login = () => {
                     </Col>
                 </Row>
                 <Row style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
-                    <Text strong style={{ marginTop: 10 }}>GVisit © 2021. V2.0.20</Text>
+                    <Text strong style={{ marginTop: 10 }}>GVisit © 2021. V2.1.0</Text>
                 </Row>
             </Col>
         </Row>
