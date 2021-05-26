@@ -23,6 +23,7 @@ const Update = () => {
     const [current, setCurrent] = useState(0);
     const [fingerprint, setFingerprint] = useState(false);
     const [id, setId] = useState('');
+    const [company, setCompany] = useState('');
     const [userId, setUserId] = useState('');
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
@@ -37,7 +38,7 @@ const Update = () => {
 
     useEffect(() => {
         const request = async () => {
-            const response = await GetSetting();           
+            const response = await GetSetting();
             const object = JSON.parse(response);
             setSettings(object);
         };
@@ -60,7 +61,7 @@ const Update = () => {
     };
 
     const getFingerprint = async () => {
-        const response = await window.UpdateController.getFingerprint();   
+        const response = await window.UpdateController.getFingerprint();
         const object = JSON.parse(response);
         if (object.success === false) {
             Modal.error({
@@ -70,11 +71,13 @@ const Update = () => {
         } else {
             setId(object.user.id);
             setUserId(object.user.userId);
+            setCompany(object.user.company);
             setName(object.user.name);
             setLastname(object.user.lastname);
             setIsRfc(object.user.isRfc);
             setRfc(object.user.rfc);
-            setBirthday(object.user.birthday);
+            const tmpDate = moment(object.user.birthday).format("DD/MM/YYYY").toString();
+            setBirthday(tmpDate);
             setImage(object.user.image);
             setFingerprint(true);
         }
@@ -150,13 +153,22 @@ const Update = () => {
                         <Row style={{ width: '100%' }}>
                             <Space direction="vertical">
                                 <Title level={3}>Ingresa la información de usuario</Title>
-                                <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setUserId(e.target.value) }} value={userId} style={{ marginTop: 10 }} placeholder="Número de identificación" />
+                                <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setCompany(e.target.value) }} value={company} style={{ marginTop: 10 }} placeholder="Empresa" />
+                                {
+                                    settings.useDNI === true && <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setUserId(e.target.value) }} value={userId} style={{ marginTop: 10 }} placeholder="Número de identificación" />
+                                }
                                 <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setName(e.target.value) }} value={name} style={{ marginTop: 10 }} placeholder="Nombre" />
                                 <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setLastname(e.target.value) }} value={lastname} style={{ marginTop: 10 }} placeholder="Apellido" />
                                 <Checkbox onChange={() => { setIsRfc(!isRfc) }} checked={isRfc}>Cuenta con RFC</Checkbox>
                                 {
                                     isRfc && <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setRfc(e.target.value) }} value={rfc} placeholder="Rfc" />
-                                }                                
+                                }
+                                {
+                                    settings.useDate === true &&
+                                    <InputMask mask="99/99/9999" value={birthday} onChange={(e) => { setBirthday(e.target.value); }}>
+                                        {(inputProps) => <Input {...inputProps} />}
+                                    </InputMask>
+                                }
                                 {/* <DatePicker placeholder="Fecha de nacimiento" format="YYYY-MM-DD HH:mm:ss" value={birthday} showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }} onChange={(e) => { setBirthday(e.format("YYYY-MM-DD HH:mm:ss").toString()) }} /> */}
                                 {isLoading &&
                                     <Spin indicator={antIcon} />
