@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/gvisit-application/static/css/main.b1037e3f.chunk.css",
-    "main.js": "/gvisit-application/static/js/main.9ae32dcd.chunk.js",
-    "main.js.map": "/gvisit-application/static/js/main.9ae32dcd.chunk.js.map",
+    "main.css": "/gvisit-application/static/css/main.ab4f6a2c.chunk.css",
+    "main.js": "/gvisit-application/static/js/main.362209e6.chunk.js",
+    "main.js.map": "/gvisit-application/static/js/main.362209e6.chunk.js.map",
     "runtime-main.js": "/gvisit-application/static/js/runtime-main.ff23942a.js",
     "runtime-main.js.map": "/gvisit-application/static/js/runtime-main.ff23942a.js.map",
-    "static/js/2.22845b39.chunk.js": "/gvisit-application/static/js/2.22845b39.chunk.js",
-    "static/js/2.22845b39.chunk.js.map": "/gvisit-application/static/js/2.22845b39.chunk.js.map",
+    "static/js/2.0a268708.chunk.js": "/gvisit-application/static/js/2.0a268708.chunk.js",
+    "static/js/2.0a268708.chunk.js.map": "/gvisit-application/static/js/2.0a268708.chunk.js.map",
     "index.html": "/gvisit-application/index.html",
-    "static/css/main.b1037e3f.chunk.css.map": "/gvisit-application/static/css/main.b1037e3f.chunk.css.map",
-    "static/js/2.22845b39.chunk.js.LICENSE.txt": "/gvisit-application/static/js/2.22845b39.chunk.js.LICENSE.txt",
+    "static/css/main.ab4f6a2c.chunk.css.map": "/gvisit-application/static/css/main.ab4f6a2c.chunk.css.map",
+    "static/js/2.0a268708.chunk.js.LICENSE.txt": "/gvisit-application/static/js/2.0a268708.chunk.js.LICENSE.txt",
     "static/media/fingerprint_icon.2655f6e7.png": "/gvisit-application/static/media/fingerprint_icon.2655f6e7.png",
     "static/media/logo.b03bdfc6.png": "/gvisit-application/static/media/logo.b03bdfc6.png"
   },
   "entrypoints": [
     "static/js/runtime-main.ff23942a.js",
-    "static/js/2.22845b39.chunk.js",
-    "static/css/main.b1037e3f.chunk.css",
-    "static/js/main.9ae32dcd.chunk.js"
+    "static/js/2.0a268708.chunk.js",
+    "static/css/main.ab4f6a2c.chunk.css",
+    "static/js/main.362209e6.chunk.js"
   ]
 }
