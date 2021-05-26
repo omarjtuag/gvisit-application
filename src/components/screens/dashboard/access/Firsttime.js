@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { Breadcrumb, Steps, Row, Col, Layout, Button, Typography, Space, Modal, Input, Select, Spin, notification, Checkbox, DatePicker } from 'antd';
 import { LoadingOutlined } from '@ant-design/icons';
 import moment from 'moment';
+import InputMask from 'react-input-mask';
 import { GetPolicy, GetSetting, CreateVisitor } from '../../../../helpers/controllers/Access';
 import { GetAll } from '../../../../helpers/controllers/Motive';
 
@@ -213,11 +214,15 @@ const Firsttime = () => {
                                     isRfc && <Input onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setRfc(e.target.value) }} value={rfc} placeholder="Rfc" />
                                 }
                                 {
-                                    settings.useDate === true && <DatePicker placeholder="Fecha de nacimiento" format="YYYY-MM-DD HH:mm:ss" showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }} onChange={(e) => { setSetupDatetime(e.format("YYYY-MM-DD HH:mm:ss").toString()) }} />
+                                    settings.useDate === true &&
+                                    <InputMask mask="99/99/9999" value={setupDatetime} onChange={(e) => { setSetupDatetime(e.target.value); }}>
+                                        {(inputProps) => <Input {...inputProps} />}
+                                    </InputMask>
                                 }
                                 {isLoading &&
                                     <Spin indicator={antIcon} />
                                 }
+                                {/* <DatePicker placeholder="Fecha de nacimiento" format="YYYY-MM-DD HH:mm:ss" showTime={{ defaultValue: moment('00:00:00', 'HH:mm:ss') }} onChange={(e) => { setSetupDatetime(e.format("YYYY-MM-DD HH:mm:ss").toString()) }} /> */}
                             </Space>
                         </Row>
                     </Col>

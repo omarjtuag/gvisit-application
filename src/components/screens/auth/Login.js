@@ -42,7 +42,7 @@ const Login = () => {
                             <img src={Logo} style={{ height: 150, width: 250, alignSelf: 'center' }} />
                             <Text style={{ textAlign: 'center', alignSelf: 'center' }}>Introduce tus datos para iniciar sesión</Text>
                             <Input onFocus={() => { window.AuthController.openKeyboard(); }} onPressEnter={signIn} onChange={(e) => { setUser(e.target.value) }} style={{ marginTop: 20 }} prefix={<UserOutlined />} placeholder="Usuario" />
-                            <Input.Password onFocus={() => { window.AuthController.openKeyboard(); }} onPressEnter={signIn} onChange={(e) => { setPass(e.target.value) }} placeholder="Contraseña" iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />
+                            <Input.Password onFocus={() => { window.AuthController.openKeyboard(); }} onPressEnter={signIn} onChange={(e) => { setPass(e.target.value) }} placeholder="Contraseña" iconRender={visible => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)} />                           
                             <Link to="/auth/first"><Text>¿Primer acceso? Pulsa aquí </Text></Link>
                             {isLoading ?
                                 <Spin indicator={antIcon} style={{ alignSelf: 'center', color: '#009600', marginTop: 10 }} /> :
@@ -53,7 +53,7 @@ const Login = () => {
                     </Col>
                 </Row>
                 <Row style={{ flex: 1, flexDirection: 'column', justifyContent: 'center', alignContent: 'center', alignItems: 'center' }}>
-                    <Text strong style={{ marginTop: 10 }}>GVisit © 2021. V2.0.17</Text>
+                    <Text strong style={{ marginTop: 10 }}>GVisit © 2021. V2.0.18</Text>
                 </Row>
             </Col>
         </Row>
