@@ -76,9 +76,8 @@ const Update = () => {
             setName(object.user.name);
             setLastname(object.user.lastname);
             setIsRfc(object.user.isRfc);
-            setRfc(object.user.rfc);
-            const tmpDate = moment(object.user.birthday).format("DD/MM/YYYY").toString();
-            setBirthday(tmpDate);
+            setRfc(object.user.rfc);            
+            setBirthday(object.user.birthday);
             setImage(object.user.image);
             setFingerprint(true);
         }
