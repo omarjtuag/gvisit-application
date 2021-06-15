@@ -103,10 +103,34 @@ const Firsttime = () => {
             });
         } else {
             if (settings.useDate === true) {
-                Modal.info({
-                    title: 'Mensaje del sistema',
-                    content: 'Debe ingresar fecha de nacimiento'
-                });
+                if (setupDatetime === '') {
+                    Modal.info({
+                        title: 'Mensaje del sistema',
+                        content: 'Debe ingresar fecha de nacimiento'
+                    });
+                } else {
+                    setIsLoading(true);
+                    const obj = {
+                        userId: userId,
+                        name: name,
+                        lastname: lastname,
+                        company: company,
+                        isRfc: isRfc,
+                        rfc: rfc,
+                        dateBirth: setupDatetime,
+                        badge: badge,
+                        host: host,
+                        motive: motive
+                    };
+                    const response = await CreateVisitor(JSON.stringify(obj));
+                    if (response !== false) {
+                        openNotificationWithIcon('success', 'Entrada registrada exitosamente');
+                        history.push('/dashboard/access');
+                    } else {
+                        setIsLoading(false);
+                        openNotificationWithIcon('error', 'Error registrando entrada');
+                    }
+                }
             } else {
                 setIsLoading(true);
                 const obj = {
