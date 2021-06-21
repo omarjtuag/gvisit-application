@@ -76,7 +76,7 @@ const Update = () => {
             setName(object.user.name);
             setLastname(object.user.lastname);
             setIsRfc(object.user.isRfc);
-            setRfc(object.user.rfc);            
+            setRfc(object.user.rfc);
             setBirthday(object.user.birthday);
             setImage(object.user.image);
             setFingerprint(true);
@@ -166,7 +166,7 @@ const Update = () => {
                                 }
                                 {
                                     settings.useDate === true &&
-                                    <InputMask mask="99/99/9999" value={birthday} onChange={(e) => { setBirthday(e.target.value); }}>
+                                    <InputMask mask="99/99/9999" value={birthday} onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setBirthday(e.target.value); }}>
                                         {(inputProps) => <Input {...inputProps} />}
                                     </InputMask>
                                 }

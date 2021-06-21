@@ -1,7 +1,7 @@
 {
   "name": "gvisit",
-  "version": "2.1.6",
-  "homepage": "https://omarjtuag.github.io/gvisit-application",
+  "version": "2.1.7",
+  "homepage": "http://localhost/gvisit-application",
   "private": true,
   "dependencies": {
     "@craco/craco": "^6.1.2",

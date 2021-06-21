@@ -246,7 +246,7 @@ const Firsttime = () => {
                                 }
                                 {
                                     settings.useDate === true &&
-                                    <InputMask mask="99/99/9999" value={setupDatetime} onChange={(e) => { setSetupDatetime(e.target.value); }}>
+                                    <InputMask mask="99/99/9999" value={setupDatetime} onFocus={() => { window.AuthController.openKeyboard(); }} onChange={(e) => { setSetupDatetime(e.target.value); }}>
                                         {(inputProps) => <Input {...inputProps} />}
                                     </InputMask>
                                 }
